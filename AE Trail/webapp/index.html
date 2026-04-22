@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT-Trail</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+<!-- Level Selection Screen -->
+    <div id="levelSelection" class="level-selection">
+      <div class="level-content">
+        <h1 class="main-title">IT-Trail</h1>
+        <p class="subtitle">Test your JavaScript knowledge</p>
+        
+        <div class="levels-grid">
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Challenge Content -->
+   <div id="mainContent" class="main-content hidden">
+      <!-- Top stats bar with all trackers and metrics -->
+      <div class="stats-bar">
+        <div class="stats-container">
+          <!-- Task timer - only visible when in a task -->
+          <div class="stat-card" id="taskTimerCard">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-info">
+              <div class="stat-label">Task Time</div>
+              <div class="stat-value" id="taskTimerText">0:00</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-info">
+              <div class="stat-label">Total Time</div>
+              <div class="stat-value" id="timerText">0:00</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-info">
+              <div class="stat-label">XP</div>
+              <div class="stat-value" id="totalXP">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-info">
+              <div class="stat-label">Achievements</div>
+              <div class="stat-value" id="achievementCount">0/7</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+              <div class="stat-label">Progress</div>
+              <div class="stat-value" id="progressText">0%</div>
+            </div>
+          </div>
+
+          <div class="stat-divider"></div>
+
+          <button id="achievementsBtn" class="stat-button">
+            <span>🎯 Achievements</span>
+          </button>
+
+          <button id="themeToggleSidebar" class="stat-button" title="Toggle dark mode">
+            <span class="theme-icon">🌙</span>
+          </button>
+
+          <button id="backToLevels" class="stat-button secondary">
+            ← Back
+          </button>
+        </div>
+      </div>
+
+      <!-- Main layout: PDF dominant + compact code input -->
+      <div class="main-layout">
+        <!-- PDF Section - Takes most of the space -->
+        <div class="pdf-section">
+          <!-- Task header with navigation -->
+          <div class="task-nav">
+            <button id="prevTask" class="nav-btn">←</button>
+            <div class="task-info">
+              <span class="task-label" id="levelBadge">Level</span>
+              <span class="task-number" id="taskTitle">Task 1</span>
+              <span class="task-total" id="taskTotal">of 5</span>
+            </div>
+            <button id="nextTask" class="nav-btn">→</button>
+          </div>
+
+          <!-- Updated PDF/HTML viewer to support side-by-side display -->
+          <div class="pdf-container">
+            <iframe id="pdfViewer" class="pdf-iframe" title="Task PDF"></iframe>
+            <iframe id="htmlViewer" class="pdf-iframe hidden" title="Task HTML"></iframe>
+          </div>
+
+          <!-- PDF Controls -->
+          <!-- <div class="pdf-controls">
+            <button id="prevPage" class="control-btn">← Prev</button>
+            <span class="page-counter">Page <span id="currentPage">1</span>/<span id="totalPages">1</span></span>
+            <button id="nextPage" class="control-btn">Next →</button>
+          </div> -->
+
+          <!-- Task Tracker at bottom -->
+          <div class="tracker-section">
+            <div class="tracker-label">Tasks Progress</div>
+            <div class="task-tracker" id="taskTracker"></div>
+          </div>
+        </div>
+
+        <!-- Code Input Section - Compact sidebar -->
+        <div class="code-panel">
+          <div class="code-header">Enter Solution</div>
+          
+          <div class="code-input-group">
+            <input 
+              id="codeInput" 
+              type="text" 
+              placeholder="Enter code..." 
+              class="code-input"
+            />
+          </div>
+          <button id="submitCode" class="submit-btn">Verify</button>
+          
+          <!-- Added notizen textarea that persists across tasks -->
+          <textarea
+            id="notizen" 
+            placeholder="Hier kannst du Notizen aufschrieben." 
+            class="notizen-input"
+          ></textarea>
+
+
+          <div id="feedback" class="feedback-message"></div>
+
+          <!-- Lock overlay for this panel -->
+          <div id="lockOverlay" class="lock-overlay hidden">
+            <div class="lock-content">
+              <div class="lock-icon">🔒</div>
+              <div class="lock-message">Task Locked</div>
+              <div class="lock-timer" id="lockTimer">Wait 30s</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completion Screen -->
+      <div id="completionScreen" class="completion-screen hidden">
+        <div class="completion-content">
+          <div class="completion-icon">✓</div>
+          <h2>Challenge Complete!</h2>
+          <p>You've mastered all mathematics tasks</p>
+          
+          <div class="completion-stats">
+            <div class="completion-stat">
+              <div class="stat-value" id="finalTime">0:00</div>
+              <div class="stat-label">Remaining Time</div>
+            </div>
+            <div class="completion-stat">
+              <div class="stat-value" id="finalXP">0 XP</div>
+              <div class="stat-label">Total XP</div>
+            </div>
+            <div class="completion-stat">
+              <div class="stat-value" id="finalAchievements">0/7</div>
+              <div class="stat-label">Achievements</div>
+            </div>
+            <button class="copy-code-btn" id="viewAchievements">
+              View Achievements
+            </button>
+          </div>
+
+          <div class="completion-task-times" id="completionTaskTimes">
+            <h3>Time per Task</h3>
+            <ul id="taskTimesList">
+              <!-- JS will populate each task and its time here -->
+            </ul>
+          </div>
+
+          <br>
+
+          <!-- Added feedback section at completion -->
+          <div class="feedback-section">
+            <p class="feedback-label">How was your experience? (Optional)</p>
+            <textarea id="userFeedback" class="user-feedback-input" placeholder="Share your thoughts..."></textarea>
+          </div>
+
+          <div class="master-code-section">
+            <p class="master-code-label">Your Master Code</p>
+            <div class="master-code-display" id="masterCode">LOADING...</div>
+            <button class="copy-code-btn" id="copyMasterCode">
+              📋 Copy Code
+            </button>
+          </div>
+
+          <button id="restartBtn" class="restart-btn">Start New Challenge</button>
+        </div>
+      </div>
+
+      <!-- Achievements Modal -->
+      <div id="achievementsModal" class="achievements-modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Achievements</h2>
+            <button id="closeModal" class="close-btn">✕</button>
+          </div>
+          <div class="achievements-grid" id="achievementsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
