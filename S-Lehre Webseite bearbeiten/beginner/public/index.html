@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Mein Mini-Steckbrief</title>
+  <!-- Verlinkung zur CSS-Datei für das Aussehen -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Alles in einem Container, damit wir alles zentrieren können -->
+  <div id="container">
+    <!-- Überschrift mit Name -->
+    <h1>👋 Hallo, ich bin <span id="name">Max</span>!</h1>
+    
+    <!-- Alter -->
+    <p>Ich bin <b id="age">15</b> Jahre alt.</p>
+    
+    <!-- Lieblingszahl -->
+    <p>Meine Lieblingszahl ist <b id="favNumber">42</b>.</p>
+    
+    <!-- Lieblingsfarbe -->
+    <p>Meine Lieblingsfarbe ist <b id="favColor">grün</b>.</p>
+    
+    <!-- Lieblingswort -->
+    <p>Und mein Lieblingswort ist <b id="favWord">Pizza</b> 🍕.</p>
+
+    <!-- Buttons zum Ändern der Farbe -->
+    <div id="buttons">
+      <!-- Jeder Button ruft eine Funktion auf, die wir in JS schreiben -->
+      <button onclick="changeColor('rot')">Rot</button>
+      <button onclick="changeColor('blau')">Blau</button>
+      <button onclick="changeColor('gelb')">Gelb</button>
+    </div>
+
+    <!-- Hier wird angezeigt, was gerade passiert -->
+    <p id="message"></p>
+  </div>
+
+  <!-- Verlinkung zur JS-Datei für Interaktivität -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* Das gesamte Browser-Fenster wird verwendet */
+body {
+  background-color: pink; /* Hintergrundfarbe */
+  font-family: 'Comic Sans MS', sans-serif; /* Schriftart */
+  margin: 0;    /* Entfernt Standardränder */
+  padding: 0;   /* Entfernt Standard-Padding */
+  height: 100vh; /* Höhe = Fensterhöhe */
+  
+  /* Flexbox wird verwendet, um alles in der Mitte zu zentrieren */
+  display: flex;
+  justify-content: center; /* horizontal zentrieren */
+  align-items: center;     /* vertikal zentrieren */
+}
+
+/* Container, der alle Inhalte enthält */
+#container {
+  text-align: center; /* Text wird in der Mitte ausgerichtet */
+}
+
+/* Styling der Buttons */
+button {
+  margin: 5px;           /* Abstand zwischen Buttons */
+  padding: 10px 20px;    /* Innenabstand */
+  font-size: 16px;       /* Schriftgröße */
+  cursor: pointer;       /* Maus wird Hand beim Drüberfahren */
+  border-radius: 5px;    /* Runde Ecken */
+  border: 1px solid black; /* Rand */
+}
+
+/* Nachricht, die angezeigt wird */
+#message {
+  margin-top: 20px; /* Abstand nach oben */
+  font-weight: bold; /* Fettschrift */
+}

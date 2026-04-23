@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Grundlegende Meta‑Angaben -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel, sichtbar in der Registerkarte -->
+    <title>Pinnwand mit Zeichnungen</title>
+    
+    <!-- Unsere CSS‑Datei einbinden -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Hauptüberschrift -->
+    <h1>📝 Digitale Pinnwand</h1>
+
+    <!-- Kontrollen: Nickname, Farbe, Buttons -->
+    <div class="controls">
+        <!-- Textfeld für den Nickname -->
+        <input type="text" id="nickname" placeholder="Dein Nickname">
+        <!-- Farb‑Picker: Standard ist Schwarz -->
+        <input type="color" id="color-picker" value="#000000">
+        <!-- Buttons – jeweils mit eindeutiger ID -->
+        <button id="clear-btn">Löschen</button>
+        <button id="submit-btn">Absenden</button>
+    </div>
+
+    <!-- Zeichenbereich (Canvas) -->
+    <canvas id="drawing-canvas" width="400" height="300"></canvas>
+
+    <!-- Überschrift für den Bereich, in dem die Zettel angezeigt werden -->
+    <h2>Pinnwand</h2>
+
+    <!-- Hier werden die Bilder der abgesendeten Zeichnungen gesammelt -->
+    <div class="messages-pile" id="messages-pile">
+        <!-- Leerer Platz – im JavaScript werden neue Elemente eingefügt -->
+    </div>
+
+    <!-- JavaScript‑Datei einbinden – am Ende, damit das DOM bereits geladen ist -->
+    <script src="script.js"></script>
+</body>
+</html>
